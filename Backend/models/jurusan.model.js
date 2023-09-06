@@ -16,7 +16,7 @@ class jurusanModel {
     }
 
     async deleteByID(id) {
-        const deleted = await db('siswa').where('id', id).del()
+        const deleted = await db('jurusan').where('id', id).del()
         return deleted
     }
 

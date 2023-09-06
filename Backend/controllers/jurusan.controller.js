@@ -30,19 +30,19 @@ class jurusan {
     async deletejurusan(req, res) {
         try {
             const id = req.params['id'];
-            const datajurusan= await jurusanmodel.deleteByID(id)
+            const datajurusan= await jurusanmodel.getjurusanById(id)
 
             if (datajurusan == 0) {
                 return res.json({ message: 'jurusan yang dimaksud tidak ada' });
             }
 
-            const deletedID = await siswamodel.deleteByID(id)
+            const deletedID = await jurusanmodel.deleteByID(id)
 
             if (deletedID === 0) {
                 return res.status(400).json({ message: "Tidak ada data jurusan yang berhasil dihapus", data: deletedID });
             }
 
-            res.status(200).json({ message: "Data pengguna berhasil dihapus" });
+            res.status(200).json({ message: "jurusan berhasil dihapus" });
         } catch (error) {
             res.status(500).json({ message: 'Terjadi kesalahan saat menghapus data', data: error });
         }
@@ -64,17 +64,16 @@ class jurusan {
     async editjurusan(req, res) {
         try {
             const id = req.params.id
-            const datasiswa= await siswamodel.getSiswaById(id)
-            if (datasiswa== 0) {
+            const datajurusan = await jurusanmodel.getjurusanById(id)
+            if (datajurusan == 0) {
                 return res.json({ message: 'jurusan yang dimaksud tidak ada' });
             }
-            const { name, alamat,jurusan } = req.body || datasiswa
-            const editData = await siswamodel.editSiswa(id,name, alamat, jurusan)
+            const { jurusan } = req.body || datajurusan.jurusan
+            const editData = await jurusanmodel.editSiswa(id,jurusan)
             if (editData === 0) {
-                return res.status(400).json({ message: "Tidak ada data siswa yang berhasil diubah", data: editData });
+                return res.status(400).json({ message: "Tidak ada data jurusan yang berhasil diubah", data: editData });
             }
-            res.status(200).json({ message: "Data siswa berhasil diubah", data: editData });
-
+            res.status(200).json({ message: "Data jurusan berhasil diubah", data: editData });
         }
         catch (error) {
             res.status(500).json({ message: 'Terjadi kesalahan saat mengubah data', data: error });
