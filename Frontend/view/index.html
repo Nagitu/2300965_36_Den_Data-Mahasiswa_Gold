@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sekolah App</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Sekolah App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <input type="text" class="form-control mr-2" placeholder="Cari...">
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-primary">Cari</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+                <div class="position-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">
+                                Kelas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                Siswa
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                Guru
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Tempat untuk Menampilkan Hasil Fetch -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+                <div class="card-body">
+                    <table id="datatablesSimple">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nama Lengkap</th>
+                                <th>Alamat</th>
+                                <th>Kelas</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Data akan dimasukkan di sini menggunakan JavaScript -->
+                        </tbody>
+                    </table>
+                    <!-- modal edit untuk mengedit data pada tabel -->
+                    <!-- Modal untuk mengedit data -->
+                </div>
+                <div class="modal fade" id="editDataModal" tabindex="-1" role="dialog"
+                    aria-labelledby="editDataModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editDataModalLabel">Edit Data</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Form edit data disini -->
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="editId" class="form-label">ID</label>
+                                        <input type="text" class="form-control" id="editId" readonly>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="editNama" class="form-label">Nama Lengkap</label>
+                                        <input type="text" class="form-control" id="editNama">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="editAlamat" class="form-label">Alamat</label>
+                                        <input type="text" class="form-control" id="editAlamat">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="editKelas" class="form-label">Kelas</label>
+                                        <input type="text" class="form-control" id="editKelas">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                <button type="button" class="btn btn-primary">Simpan Perubahan</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal untuk mengedit data -->
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (Popper.js and Bootstrap JS) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"></script>
+
+
+    <!-- Contoh Fetch Data (Anda harus menggantinya dengan kode yang sesuai dengan API Anda) -->
+
+</body>
+<script src="../src/home.js"></script>
+
+</html>
