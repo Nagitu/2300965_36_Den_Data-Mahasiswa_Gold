@@ -52,6 +52,7 @@ class jurusan {
     async tambahjurusan(req, res) {
         try {
             const {jurusan } = req.body
+            if(!jurusan) res.json({message: "masukan nama jurusan terlebih dahulu"})
             const id = uuidv4()
             const datajurusan = await jurusanmodel.addjurusan(id, jurusan)
             res.json({ message: 'data berhasil ditambah', data: datajurusan })
