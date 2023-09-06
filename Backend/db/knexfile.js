@@ -7,7 +7,7 @@ module.exports = {
 
   development: {
     client: 'postgresql',
-    connection: 'postgres://postgres:root@lolcalhost:5432/mahasiswa'
+    connection: 'postgres://postgres:root@localhost:5432/mahasiswa'
   },
 
   staging: {

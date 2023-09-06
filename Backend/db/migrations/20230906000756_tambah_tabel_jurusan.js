@@ -4,7 +4,8 @@
  */
 exports.up = function(knex) {
   return knex.schema.createTable('jurusan', table=>{
-    table
+    table.uuid('id').primary().notNullable()
+    table.string('jurusan').notNullable()
   })
 };
 
@@ -13,5 +14,5 @@ exports.up = function(knex) {
  * @returns { Promise<void> }
  */
 exports.down = function(knex) {
-  
+  return knex.schema.dropTableIfExists('jurusan')
 };
