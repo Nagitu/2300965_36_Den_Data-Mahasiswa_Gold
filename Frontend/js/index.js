@@ -1,3 +1,7 @@
+
+
+
+
 function addJurusan(nama) {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -71,6 +75,8 @@ async function fetchData() {
                 document.getElementById('editJurusan').value = jurusan;
             });
         });
+
+        
         deleteButtons.forEach(button => {
             button.addEventListener('click', async function () {
                 // Ambil ID data yang akan dihapus
@@ -80,6 +86,8 @@ async function fetchData() {
                 location.reload()
             });
         });
+
+
         document.getElementById("simpanPerubahan").addEventListener("click", function () {
             const nama = document.getElementById("nama").value;
             addJurusan(nama)

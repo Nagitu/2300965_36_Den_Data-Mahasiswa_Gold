@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-// const siswaRoute = require('../routes/siswa.route');
+const mahasiswaRoute = require('./routes/mahasiswa.route');
 const jurusanRoute = require('./routes/jurusan.route')
 const cors = require('cors');
 
@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.use(express.json());
-// app.use('/api/v1/siswa', siswaRoute);
+app.use('/api/v1/mahasiswa', mahasiswaRoute);
 app.use('/api/v1/jurusan', jurusanRoute);
 
 
