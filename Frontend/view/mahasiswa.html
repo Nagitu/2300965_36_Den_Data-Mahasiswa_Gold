@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sekolah App</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/alert.style.css">
+
+</head>
+
+<body>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Sekolah App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <input type="text" class="form-control mr-2" placeholder="Cari...">
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-primary">Cari</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+                <div class="position-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">
+                                Kelas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                Siswa
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                Guru
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Tempat untuk Menampilkan Hasil Fetch -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+                <div class="card-body">
+                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                        data-target="#ModalTambahMahasiswa">Tambah
+                        Data Mahasiswa</button>
+                    <table id="datamahasiswa">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nama Lengkap</th>
+                                <th>Alamat</th>
+                                <th>Jurusan</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Data akan dimasukkan di sini menggunakan JavaScript -->
+                        </tbody>
+                    </table>
+                    <!-- Modal untuk mengedit data -->
+                </div>
+                <div class="modal fade" id="editDataModal" tabindex="-1" role="dialog"
+                    aria-labelledby="editDataModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editDataModalLabel">Edit Data</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Form edit data disini -->
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="editId" class="form-label">ID</label>
+                                        <input type="text" class="form-control" id="editId" readonly>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="editJurusan" class="form-label">Jurusan</label>
+                                        <input type="text" class="form-control" id="editJurusan">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                <button type="button" class="btn btn-primary">Simpan Perubahan</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal untuk menambah Data -->
+                <div class="modal fade" id="tambahDataModal" tabindex="-1" role="dialog"
+                    aria-labelledby="tambahDataModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="tambahDataModalLabel">Tambah Data</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Form tambah data disini -->
+                                <form>
+                                    <div class="form-group">
+                                        <label for="nama">Nama:</label>
+                                        <input type="text" class="form-control" id="nama"
+                                            placeholder="Masukkan Nama Jurusan ">
+                                        <br>
+                                        <!-- <label for="nilai">Nilai:</label> -->
+                                    </div>
+                                    <!-- Tambahkan field lainnya sesuai kebutuhan -->
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                <button type="button" id="simpanPerubahan" class="btn btn-primary">Simpan</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Modal Konfirmasi Hapus Data -->
+                <div id="konfirmasiHapusModal" class="modal">
+                    <div class="modal-content">
+                        <p>Apakah Anda yakin ingin menghapus data ini?</p>
+                        <button id="btnHapusData">Hapus</button>
+                        <button id="btnBatal">Batal</button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (Popper.js and Bootstrap JS) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="../js/mahasiswa.js"></script>
+
+
+
+</body>
+
+
+
+</html>

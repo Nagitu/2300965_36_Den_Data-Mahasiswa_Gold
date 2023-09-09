@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+
+       
+  
 
 <head>
     <meta charset="UTF-8">
@@ -8,6 +9,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/alert.style.css">
 
 </head>
 
@@ -58,9 +60,11 @@
 
             <!-- Tempat untuk Menampilkan Hasil Fetch -->
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahDataModal">Tambah
-                    Data</button>
+
                 <div class="card-body">
+                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                        data-target="#tambahDataModal">Tambah
+                        Data</button>
                     <table id="datatablesSimple">
                         <thead>
                             <tr>
@@ -70,7 +74,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Data akan dimasukkan di sini menggunakan JavaScript -->
+                            <% for (let i = 0; i < data.length; i++) { %>
+                                <tr>
+                                    <td><%= data[i].id %></td>
+                                    <td><%= data[i].jurusan %></td>
+                                </tr>
+                            <% } %>
                         </tbody>
                     </table>
                     <!-- Modal untuk mengedit data -->
@@ -106,35 +115,36 @@
                     </div>
                 </div>
                 <!-- Modal untuk menambah Data -->
-                <div class="modal fade" id="tambahDataModal" tabindex="-1" role="dialog" aria-labelledby="tambahDataModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="tambahDataModalLabel">Tambah Data</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <!-- Form tambah data disini -->
-                            <form>
-                                <div class="form-group">
-                                    <label for="nama">Nama:</label>
-                                    <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama Jurusan ">
-                                    <br>
-                                    <!-- <label for="nilai">Nilai:</label> -->
-                                </div>
-                                <!-- Tambahkan field lainnya sesuai kebutuhan -->
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                            <button type="button" id="simpanPerubahan" class="btn btn-primary">Simpan</button>
+                <div class="modal fade" id="tambahDataModal" tabindex="-1" role="dialog"
+                    aria-labelledby="tambahDataModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="tambahDataModalLabel">Tambah Data</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Form tambah data disini -->
+                                <form>
+                                    <div class="form-group">
+                                        <label for="nama">Nama:</label>
+                                        <input type="text" class="form-control" id="nama"
+                                            placeholder="Masukkan Nama Jurusan ">
+                                        <br>
+                                        <!-- <label for="nilai">Nilai:</label> -->
+                                    </div>
+                                    <!-- Tambahkan field lainnya sesuai kebutuhan -->
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                <button type="button" id="simpanPerubahan" class="btn btn-primary">Simpan</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             </main>
         </div>
     </div>
@@ -144,12 +154,13 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="../js/index.js"></script>
 
 
-    <!-- Contoh Fetch Data (Anda harus menggantinya dengan kode yang sesuai dengan API Anda) -->
 
 </body>
-<script src="../js/index.js"></script>
-<!-- <script src="../js/jurusan.js"></script> -->
+
+
 
 </html>

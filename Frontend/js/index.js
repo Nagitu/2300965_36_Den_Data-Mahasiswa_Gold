@@ -1,14 +1,11 @@
 
-
-
-
 function addJurusan(nama) {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
     var raw = JSON.stringify({
         "jurusan": nama
-      });
+    });
     var requestOptions = {
         method: 'POST',
         headers: myHeaders,
@@ -18,16 +15,16 @@ function addJurusan(nama) {
     fetch("http://localhost:4000/api/v1/jurusan/add", requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
-        .catch(error => console.log('error', error));  
+        .catch(error => console.log('error', error));
 }
 
-function deleteJurusan(id){
+function deleteJurusan(id) {
     var requestOptions = {
         method: 'DELETE',
         redirect: 'follow'
-      };
-      
-      fetch(`http://localhost:4000/api/v1/jurusan/delete/${id}`, requestOptions)
+    };
+
+    fetch(`http://localhost:4000/api/v1/jurusan/delete/${id}`, requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
@@ -62,27 +59,49 @@ async function fetchData() {
             `])
             }
         });
+        // inisialisai vairabel untuk tombol edit 
         const editButtons = document.querySelectorAll('.edit-btn');
+        // inisialisai vairabel untuk tombol delete
         const deleteButtons = document.querySelectorAll('.delete-btn');
+
+        //untuk memunculkan data ke dalam modal edit
         editButtons.forEach(button => {
             button.addEventListener('click', function () {
                 // Ambil data dari atribut data
                 const id = this.getAttribute('data-id');
                 const jurusan = this.getAttribute('data-jurusan');
-                console.log([id,jurusan]);
+                console.log([id, jurusan]);
                 // Isi modal dengan data yang sesuai
                 document.getElementById('editId').value = id;
                 document.getElementById('editJurusan').value = jurusan;
             });
         });
 
-        
+        //logika saat tombol delete ditekan
         deleteButtons.forEach(button => {
             button.addEventListener('click', async function () {
-                // Ambil ID data yang akan dihapus
+                // mengambil ID data yang akan dihapus
                 const id = this.getAttribute('data-id');
-                console.log(id);
+
+                //memanggil fungsi detelejurusan 
                 deleteJurusan(id)
+
+                //memunculkan alert saat data berhasil dihapus
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-right',
+                    iconColor: 'white',
+                    customClass: {
+                        popup: 'colored-toast'
+                    },
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true
+                })
+                await Toast.fire({
+                    icon: 'success',
+                    title: 'Success'
+                })
                 location.reload()
             });
         });

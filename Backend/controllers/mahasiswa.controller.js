@@ -75,7 +75,7 @@ class mahasiswa {
 
     async addmahasiswa(req, res) {
         try {
-            const {full_name,alamat,id_jurusan } = req.body
+            const {full_name,alamat,id_jurusan } = req.body || nulll
             const id = uuidv4()
             const dataLink = await mahasiswamodel.addmahasiswa(id, full_name, alamat,id_jurusan)
             res.json({ message: 'data berhasil ditambah', data: dataLink })

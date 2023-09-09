@@ -11,7 +11,7 @@ class mahasiswamodel {
     }
 
     async getmahasiswaJurusan() {
-        const allData = await db.select('mahasiswa.id','mahasiswa.full_name','mahasiswa.alamat','jurusan.jurusan').table('mahasiswa').join('jurusan', 'mahasiswa.id_jurusan', '=', 'jurusan.id')
+        const allData = await db.select('mahasiswa.id','mahasiswa.full_name','mahasiswa.alamat','mahasiswa.id_jurusan','jurusan.jurusan').table('mahasiswa').join('jurusan', 'mahasiswa.id_jurusan', 'jurusan.id')
         return allData
     }
 
