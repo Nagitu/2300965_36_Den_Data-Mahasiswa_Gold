@@ -1,0 +1,26 @@
+/* Sidebar Styles */
+#sidebar {
+    height: 100%; /* Set tinggi sidebar sesuai kebutuhan */
+    position: sticky;
+    top: 0;
+    background-color: #f8f9fa; /* Warna latar belakang sidebar */
+    border-right: 1px solid #dee2e6; /* Garis pemisah antara sidebar dan konten */
+}
+
+/* Style untuk item menu */
+#sidebar .nav-link {
+    padding: 10px 15px; /* Padding item menu */
+    font-size: 16px; /* Ukuran font item menu */
+    color: #333; /* Warna teks item menu */
+}
+
+/* Style untuk item menu aktif */
+#sidebar .nav-link.active {
+    background-color: #007bff; /* Warna latar belakang item menu aktif */
+    color: #fff; /* Warna teks item menu aktif */
+}
+
+/* Hover style untuk item menu */
+#sidebar .nav-link:hover {
+    background-color: #f0f0f0; /* Warna latar belakang saat hover pada item menu */
+}

@@ -9,48 +9,49 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../css/alert.style.css">
+    <link rel="stylesheet" href="../css/style.css">
 
 </head>
 
 <body>
     <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Sekolah App</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <input type="text" class="form-control mr-2" placeholder="Cari...">
-                </li>
-                <li class="nav-item">
-                    <button class="btn btn-primary">Cari</button>
-                </li>
-            </ul>
+        <div class="container">
+            <a class="navbar-brand" href="#">Sekolah App</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <!-- Tambahkan elemen input dan tombol cari kembali jika diperlukan -->
+                  
+                    <!-- Tambahkan dua list menu untuk layar kecil -->
+                    <li class="nav-item d-lg-none">
+                        <a class="nav-link active" href="./jurusan.html">Jurusan</a>
+                    </li>
+                    <li class="nav-item d-lg-none">
+                        <a class="nav-link " href="./mahasiswa.html">Mahasiswa</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
-
+    
     <div class="container-fluid">
         <div class="row">
-            <!-- Sidebar -->
-            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+            <!-- Sidebar untuk layar besar -->
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-none d-lg-block bg-light sidebar">
                 <div class="position-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">
-                                Kelas
+                            <a class="nav-link active" href="./jurusan.html">
+                                Jurusan
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                Siswa
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                Guru
+                            <a class="nav-link" href="./mahasiswa.html">
+                                Mahasiswa
                             </a>
                         </li>
                     </ul>
@@ -103,7 +104,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                <button type="button" class="btn btn-primary">Simpan Perubahan</button>
+                                <button type="button" id="simpanPerubahan" class="btn btn-primary">Simpan Perubahan</button>
                             </div>
                         </div>
                     </div>
@@ -134,7 +135,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                <button type="button" id="simpanPerubahan" class="btn btn-primary">Simpan</button>
+                                <button type="button" id="simpanData" class="btn btn-primary">Simpan</button>
                             </div>
                         </div>
                     </div>

@@ -9,60 +9,62 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../css/alert.style.css">
+    <link rel="stylesheet" href="../css/style.css">
 
 </head>
 
 <body>
-    <!-- Header -->
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Sekolah App</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <input type="text" class="form-control mr-2" placeholder="Cari...">
-                </li>
-                <li class="nav-item">
-                    <button class="btn btn-primary">Cari</button>
-                </li>
-            </ul>
+        <div class="container">
+            <a class="navbar-brand" href="#">Sekolah App</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <!-- Tambahkan elemen input dan tombol cari kembali jika diperlukan -->
+
+                    <!-- Tambahkan dua list menu untuk layar kecil -->
+                    <li class="nav-item d-lg-none">
+                        <a class="nav-link" href="./jurusan.html">Jurusan</a>
+                    </li>
+                    <li class="nav-item d-lg-none">
+                        <a class="nav-link active" href="./mahasiswa.html">Mahasiswa</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
     <div class="container-fluid">
         <div class="row">
-            <!-- Sidebar -->
-            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+            <!-- Sidebar untuk layar besar -->
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-none d-lg-block bg-light sidebar">
                 <div class="position-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">
-                                Kelas
+                            <a class="nav-link " href="./jurusan.html">
+                                Jurusan
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                Siswa
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                Guru
+                            <a class="nav-link active" href="./mahasiswa.html">
+                                Mahasiswa
                             </a>
                         </li>
                     </ul>
                 </div>
             </nav>
 
+
             <!-- Tempat untuk Menampilkan Hasil Fetch -->
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
                 <div class="card-body">
                     <button type="button" class="btn btn-primary" data-toggle="modal"
-                        data-target="#ModalTambahMahasiswa">Tambah
+                        data-target="#tambahDataModal">Tambah
                         Data Mahasiswa</button>
                     <table id="datamahasiswa">
                         <thead>
@@ -78,34 +80,39 @@
                             <!-- Data akan dimasukkan di sini menggunakan JavaScript -->
                         </tbody>
                     </table>
-                    <!-- Modal untuk mengedit data -->
                 </div>
+                <!-- Modal untuk mengedit data -->
+                <!-- Modal Edit Data -->
                 <div class="modal fade" id="editDataModal" tabindex="-1" role="dialog"
-                    aria-labelledby="editDataModalLabel" aria-hidden="true">
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="editDataModalLabel">Edit Data</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Edit Data Mahasiswa</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <!-- Form edit data disini -->
-                                <form>
-                                    <div class="mb-3">
-                                        <label for="editId" class="form-label">ID</label>
-                                        <input type="text" class="form-control" id="editId" readonly>
+                                <form id="editForm">
+                                    <input type="hidden" id="editId" name="id">
+                                    <div class="form-group">
+                                        <label for="editNama">Nama</label>
+                                        <input type="text" class="form-control" id="editNama" name="nama">
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="editJurusan" class="form-label">Jurusan</label>
-                                        <input type="text" class="form-control" id="editJurusan">
+                                    <div class="form-group">
+                                        <label for="editAlamat">Alamat</label>
+                                        <input type="text" class="form-control" id="editAlamat" name="alamat">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="editJurusan">Jurusan</label>
+                                        <select class="form-control" id="editJurusan" name="jurusan"></select>
                                     </div>
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                <button type="button" class="btn btn-primary">Simpan Perubahan</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" id="saveEdit">Save changes</button>
                             </div>
                         </div>
                     </div>
@@ -127,8 +134,16 @@
                                     <div class="form-group">
                                         <label for="nama">Nama:</label>
                                         <input type="text" class="form-control" id="nama"
-                                            placeholder="Masukkan Nama Jurusan ">
+                                            placeholder="Masukkan Nama Mahasiswa ">
                                         <br>
+                                        <label for="nama">Alamat</label>
+                                        <input type="text" class="form-control" id="alamat"
+                                            placeholder="Masukkan Alamat ">
+                                        <br>
+                                        <label for="jurusan">Pilih Jurusan:</label>
+                                        <select id="jurusan" name="jurusan">
+                                            <!-- Data dari fetch akan ditambahkan di sini -->
+                                        </select>
                                         <!-- <label for="nilai">Nilai:</label> -->
                                     </div>
                                     <!-- Tambahkan field lainnya sesuai kebutuhan -->
@@ -136,12 +151,12 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                <button type="button" id="simpanPerubahan" class="btn btn-primary">Simpan</button>
+                                <button type="button" id="simpanData" class="btn btn-primary">Simpan</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Modal Konfirmasi Hapus Data -->
                 <div id="konfirmasiHapusModal" class="modal">
                     <div class="modal-content">

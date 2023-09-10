@@ -15,7 +15,7 @@ class mahasiswamodel {
         return allData
     }
 
-    async getmahamahasiswaById(id) {
+    async getmahasiswaById(id) {
         const datamahasiswa = await db.select('*').table('mahasiswa').where('id', id)
         return datamahasiswa
     }

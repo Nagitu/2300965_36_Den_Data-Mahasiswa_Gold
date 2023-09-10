@@ -57,7 +57,7 @@ class mahasiswa {
             const dataLink = await mahasiswamodel.getmahasiswaById(id)
 
             if (dataLink == 0) {
-                return res.json({ message: 'Link yang dimaksud tidak ada' });
+                return res.json({ message: 'mahasiswa yang dimaksud tidak ada' });
             }
 
             const deletedID = await mahasiswamodel.deleteByID(id)
@@ -65,11 +65,11 @@ class mahasiswa {
             if (deletedID === 0) {
                 return res.status(400).json({ message: "Tidak ada data pengguna yang berhasil dihapus", data: deletedID });
             }
-
             res.status(200).json({ message: "Data pengguna berhasil dihapus" });
         } catch (error) {
+            console.error('Terjadi kesalahan saat menghapus data:', error);
             res.status(500).json({ message: 'Terjadi kesalahan saat menghapus data', data: error });
-        }
+                  }
     }
 
 
@@ -77,11 +77,16 @@ class mahasiswa {
         try {
             const {full_name,alamat,id_jurusan } = req.body || nulll
             const id = uuidv4()
+            if (!id_jurusan) return res.status(400).json({ message: "Pilih Jurusan terlebih dahulu" });
+            if (!full_name) return res.status(400).json({ message: "Masukan nama terlebih dahulu" });
+            if (!alamat) return res.status(400).json({ message: "Masukan alamat terlebih dahulu" });
+            
             const dataLink = await mahasiswamodel.addmahasiswa(id, full_name, alamat,id_jurusan)
             res.json({ message: 'data berhasil ditambah', data: dataLink })
         }
         catch (error) {
-            res.json({ message: error })
+            console.error("Error:", error); // Cetak error ke konsol
+            res.status(500).json({ message: "Terjadi kesalahan server" }); // Respon dengan status error 500    
         }
     }
 
@@ -92,8 +97,8 @@ class mahasiswa {
             if (datamahasiswa== 0) {
                 return res.json({ message: 'Link yang dimaksud tidak ada' });
             }
-            const { name, alamat,jurusan } = req.body || datamahasiswa
-            const editData = await mahasiswamodel.editmahasiswa(id,name, alamat, jurusan)
+            const { full_name, alamat,jurusan } = req.body || datamahasiswa
+            const editData = await mahasiswamodel.editmahasiswa(id,full_name, alamat, jurusan)
             if (editData === 0) {
                 return res.status(400).json({ message: "Tidak ada data mahasiswa yang berhasil diubah", data: editData });
             }
