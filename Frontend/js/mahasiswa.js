@@ -145,6 +145,7 @@ async function fetchData() {
 
         document.getElementById("simpanPerubahan").addEventListener("click", function () {
             const nama = document.getElementById("nama").value;
+            
             addmahasiswa(nama)
             console.log("Nama:", nama);
             // Tutup modal
