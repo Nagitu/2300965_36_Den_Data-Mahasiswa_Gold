@@ -8,36 +8,36 @@ Berikut adalah langkah-langkah yang harus Anda lakukan untuk menjalankan sistem 
 
 1. Pastikan semua ekstensi yang diperlukan terpasang dengan menjalankan perintah berikut di terminal:
 
-npm install
+`npm install`
 
 
 2. Masuk ke dalam folder backend dengan perintah:
 
-cd ./backend
+`cd ./backend`
 
 
 3. Lakukan migration database dengan perintah berikut untuk menginisialisasi tabel jurusan dan tabel mahasiswa:
 
-npx knex migrate:latest
+`npx knex migrate:latest`
 
 
 Ini akan menjalankan dua migration, yaitu migration pertama untuk tabel jurusan dan migration kedua untuk tabel mahasiswa.
 
 4. Setelah itu, jalankan seed untuk mengisi data awal ke dalam tabel yang sudah dibuat:
 
-npx knex seed:run
+`npx knex seed:run`
 
 
 5. Konfigurasi koneksi database dapat ditemukan di `./backend/db/knexfile.js`. Koneksi ini menggunakan PostgreSQL dengan detail berikut:
 
-postgres://postgres:root@localhost:5432/mahasiswa
+`postgres://postgres:root@localhost:5432/mahasiswa`
 
 
 Pastikan PostgreSQL sudah terpasang dan berjalan di komputer Anda.
 
 6. Untuk menjalankan server, buka terminal di dalam folder backend dan ketik perintah berikut:
 
-npm run dev
+`npm run dev`
 
 
 Pastikan Anda berada di dalam folder backend saat menjalankan perintah ini.
