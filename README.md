@@ -46,6 +46,10 @@ Pastikan Anda berada di dalam folder backend saat menjalankan perintah ini.
 
 8. Untuk dokumentasi API, Anda dapat melihat dokumentasi Postman di bawah ini:
 
-[Dokumentasi API Postman](link-ke-dokumentasi-api-postman)
+[Dokumentasi API Jurusan](https://documenter.getpostman.com/view/29068631/2s9YC1Xuex#92fe077d-01c4-4e70-9a0e-17cd9b624212)
+
+
+[Dokumentasi API Mhasiswa](https://documenter.getpostman.com/view/29068631/2s9YC1XujKhttps://documenter.getpostman.com/view/29068631/2s9YC1XujK)
+
 
 ## Terima kasih telah menggunakan sistem pendataan mahasiswa kami!
