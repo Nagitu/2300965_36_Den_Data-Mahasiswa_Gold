@@ -13,18 +13,8 @@ app.use(express.json());
 // Middleware untuk mengurai data url-encoded
 app.use(express.urlencoded({ extended: true }));
 
-app.set('view engine', 'ejs'); // Menggunakan EJS sebagai template engine
-// app.use(express.static(__dirname + '/public')); // Jika ada aset statis (CSS, JS, dll.)
 
-app.get('/jurusan', async (req, res) => {
-  try {
-      const dataJurusan = await jurusanModel.ambilSemuaJurusan();
-      console.log(dataJurusan);
-      res.render('jurusan', { data: dataJurusan });
-  } catch (error) {
-      res.json({ message: error });
-  }
-});
+
 
 app.use(express.json());
 app.use('/api/v1/mahasiswa', mahasiswaRoute);

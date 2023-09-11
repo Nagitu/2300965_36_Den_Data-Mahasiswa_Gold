@@ -52,4 +52,4 @@ Pastikan Anda berada di dalam folder backend saat menjalankan perintah ini.
 [Dokumentasi API Mhasiswa](https://documenter.getpostman.com/view/29068631/2s9YC1XujKhttps://documenter.getpostman.com/view/29068631/2s9YC1XujK)
 
 
-## Terima kasih telah menggunakan sistem pendataan mahasiswa kami!
+## Terima kasih telah menggunakan sistem pendataan mahasiswa ini
